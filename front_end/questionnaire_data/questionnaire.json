@@ -1,0 +1,168 @@
+{
+  "questionnaire_name": "Platform Academy Hackathon Participant Survey (ZA Hub)",
+  "version": "1.0",
+  "target_group": "Platform Academy participants",
+  "questions": [
+    {
+      "id": "Q1",
+      "question": "How would you rate your overall Platform Academy learning experience?",
+      "answer_type": "integer",
+      "scale": {
+        "min": 1,
+        "max": 10,
+        "min_label": "Very poor",
+        "max_label": "Excellent"
+      },
+      "possible_answers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+      "id": "Q2",
+      "question": "How relevant was the content to your current project work?",
+      "answer_type": "integer",
+      "scale": {
+        "min": 1,
+        "max": 10,
+        "min_label": "Not relevant",
+        "max_label": "Highly relevant"
+      },
+      "possible_answers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+      "id": "Q3",
+      "question": "How confident are you in applying cloud concepts after the academy?",
+      "answer_type": "integer",
+      "scale": {
+        "min": 1,
+        "max": 10,
+        "min_label": "Not confident",
+        "max_label": "Very confident"
+      },
+      "possible_answers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+      "id": "Q4",
+      "question": "How effective were the instructor-led sessions?",
+      "answer_type": "integer",
+      "scale": {
+        "min": 1,
+        "max": 10,
+        "min_label": "Ineffective",
+        "max_label": "Highly effective"
+      },
+      "possible_answers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+      "id": "Q5",
+      "question": "How useful were the hands-on activities (game day and hackathon) for your learning?",
+      "answer_type": "integer",
+      "scale": {
+        "min": 1,
+        "max": 10,
+        "min_label": "Not useful",
+        "max_label": "Extremely useful"
+      },
+      "possible_answers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+      "id": "Q6",
+      "question": "How well did the academy support collaboration with peers and mentors?",
+      "answer_type": "integer",
+      "scale": {
+        "min": 1,
+        "max": 10,
+        "min_label": "Very poorly",
+        "max_label": "Very well"
+      },
+      "possible_answers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+      "id": "Q7",
+      "question": "How likely are you to recommend Platform Academy to a colleague?",
+      "answer_type": "integer",
+      "scale": {
+        "min": 1,
+        "max": 10,
+        "min_label": "Not likely",
+        "max_label": "Very likely"
+      },
+      "possible_answers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+      "id": "Q8",
+      "question": "Which part of the academy delivered the most value for you?",
+      "answer_type": "string",
+      "possible_answers": [
+        "Cloud Essentials",
+        "Instructor-led sessions",
+        "Self-paced learning",
+        "Game Day",
+        "Hackathon",
+        "Certification preparation"
+      ]
+    },
+    {
+      "id": "Q9",
+      "question": "Was the Platform Academy program sufficient in terms of cloud upskilling?",
+      "answer_type": "integer",
+      "scale": {
+        "min": 1,
+        "max": 10,
+        "min_label": "Not sufficient",
+        "max_label": "Highly sufficient"
+      },
+      "possible_answers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+      "id": "Q10",
+      "question": "Was the hackathon challenging enough to test your technical abilities according to the Platform Academy curriculum?",
+      "answer_type": "integer",
+      "scale": {
+        "min": 1,
+        "max": 10,
+        "min_label": "Not challenging enough",
+        "max_label": "Very challenging"
+      },
+      "possible_answers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    },
+    {
+      "id": "Q11",
+      "question": "Would you pick Platform Academy over external learning tools like Udemy/Youtube courses?",
+      "answer_type": "integer",
+      "possible_answers": [
+        {
+          "value": 1,
+          "label": "Yes"
+        },
+        {
+          "value": 0,
+          "label": "No"
+        }
+      ]
+    },
+    {
+      "id": "Q12",
+      "question": "If you used external learning tools, which one did you use the most?",
+      "answer_type": "string",
+      "possible_answers": [
+        "Udemy",
+        "Youtube",
+        "Coursera",
+        "Pluralsight",
+        "Other",
+        "Not applicable"
+      ]
+    },
+    {
+      "id": "Q13",
+      "question": "What should be improved for future Platform Academy cohorts?",
+      "answer_type": "string",
+      "max_length": 500
+    },
+    {
+      "id": "Q14",
+      "question": "What did you like the most about the Platform Academy program?",
+      "answer_type": "string",
+      "max_length": 500
+    }
+  ]
+}

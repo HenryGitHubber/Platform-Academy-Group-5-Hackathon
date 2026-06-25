@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platform Academy | Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Chart.js from CDN — no npm/install needed -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+</head>
+<body class="dashboard-body">
+
+  <!-- ── Navigation Bar ──────────────────────────────────────────────────── -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="brand-icon">🎓</div>
+      <h1>
+        Platform Academy
+        <span>Enablement Matrix Dashboard</span>
+      </h1>
+    </div>
+    <div class="navbar-right">
+      <span class="user-badge" id="userEmail"></span>
+      <span class="data-refresh-badge">Updated: <span id="generatedAt">—</span></span>
+      <button class="btn-outline" onclick="auth.logout()">Sign out</button>
+    </div>
+  </nav>
+
+  <!-- ── Loading overlay (hidden once data loads) ─────────────────────────── -->
+  <div id="loadingOverlay">
+    <div class="spinner"></div>
+    <p>Loading academy data…</p>
+  </div>
+
+  <!-- ── Main dashboard content ───────────────────────────────────────────── -->
+  <main class="dashboard-content">
+
+    <!-- ── KPI Summary Cards ─────────────────────────────────────────────── -->
+    <div class="section-header">
+      <h2>Overview</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Total Participants</div>
+        <div class="kpi-value" id="cardTotalEmployees">—</div>
+        <div class="kpi-sub">Across all intake years</div>
+      </div>
+      <div class="kpi-card orange">
+        <div class="kpi-label">Total Training Spend</div>
+        <div class="kpi-value" id="cardTotalCost">—</div>
+        <div class="kpi-sub">Avg <span id="cardAvgCost">—</span> per employee</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">Avg Satisfaction Score</div>
+        <div class="kpi-value" id="cardAvgSatisfaction">—</div>
+        <div class="kpi-sub">Across all 11 rated questions</div>
+      </div>
+      <div class="kpi-card purple">
+        <div class="kpi-label">Intake Years</div>
+        <div class="kpi-value" id="cardYears">—</div>
+        <div class="kpi-sub">Largest stream: <span id="cardTopStream">—</span></div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">Programme Success Rate</div>
+        <div class="kpi-value" id="cardSuccessRate">—</div>
+        <div class="kpi-sub">≥4 modules completed &amp; satisfaction ≥7</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Data Quality</div>
+        <div class="kpi-value" id="cardDataQuality">—</div>
+        <div class="kpi-sub">Clean employee records processed</div>
+      </div>
+    </div>
+
+    <!-- ── Year-over-Year & Satisfaction Trend ──────────────────────────── -->
+    <div class="section-header">
+      <h2>Year-over-Year Trends</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="charts-grid-2">
+
+      <div class="chart-card">
+        <h3>Employees &amp; Training Cost by Year</h3>
+        <p class="chart-subtitle">Bar = headcount · Line = total EUR spend (right axis)</p>
+        <div class="chart-canvas-wrapper">
+          <canvas id="yearChart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3>Satisfaction Score Trends</h3>
+        <p class="chart-subtitle">Average scores across key survey questions per year (1–10 scale)</p>
+        <div class="chart-canvas-wrapper">
+          <canvas id="satisfactionChart"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Module Completion & Stream Distribution ───────────────────────── -->
+    <div class="section-header">
+      <h2>Training Completion &amp; Stream Breakdown</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="charts-grid-2">
+
+      <div class="chart-card">
+        <h3>Module Completion Rates</h3>
+        <p class="chart-subtitle">Enrolled vs completed per training module (all years combined)</p>
+        <div class="chart-canvas-wrapper tall">
+          <canvas id="moduleChart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3>Employees by Stream</h3>
+        <p class="chart-subtitle">Headcount &amp; satisfaction score per programme stream</p>
+        <div class="chart-canvas-wrapper tall">
+          <canvas id="streamChart"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Participant Feedback ──────────────────────────────────────────── -->
+    <div class="section-header">
+      <h2>Participant Feedback</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="charts-grid-2">
+
+      <div class="chart-card">
+        <h3>Most Valuable Programme Part (Q8)</h3>
+        <p class="chart-subtitle">Which part of Platform Academy delivered the most value?</p>
+        <div class="chart-canvas-wrapper doughnut">
+          <canvas id="q8Chart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3>Platform Academy vs External Tools (Q11)</h3>
+        <p class="chart-subtitle">Would participants choose Platform Academy over Udemy / YouTube?</p>
+        <div class="chart-canvas-wrapper doughnut" style="position:relative;">
+          <canvas id="q11Chart"></canvas>
+          <div class="q11-centre">
+            <div class="big" id="q11Yes">—</div>
+            <div class="label">said Yes</div>
+            <div class="big" id="q11Pct" style="font-size:1.1rem; margin-top:4px; color:#555;"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Cost Analysis by Stream (full width) ────────────────────────── -->
+    <div class="section-header">
+      <h2>Cost Analysis by Stream</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="charts-grid-full">
+      <div class="chart-card">
+        <h3>Average Training Cost per Employee by Stream (EUR)</h3>
+        <p class="chart-subtitle">Based on completed modules × unit cost from cost key data</p>
+        <div class="chart-canvas-wrapper">
+          <canvas id="costStreamChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ROI Analysis ─────────────────────────────────────────────────── -->
+    <div class="section-header">
+      <h2>ROI Analysis — Which Programmes Deliver the Highest Return?</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="charts-grid-2">
+
+      <div class="chart-card">
+        <h3>ROI Scatter Plot</h3>
+        <p class="chart-subtitle">X = cost per employee &middot; Y = satisfaction &middot; Bubble size = completion rate</p>
+        <div class="chart-canvas-wrapper tall">
+          <canvas id="roiScatterChart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3>Programme ROI Ranking</h3>
+        <p class="chart-subtitle">ROI = (Satisfaction × Completion) ÷ Cost &mdash; normalised 0&ndash;1 scale</p>
+        <div style="overflow-y:auto; max-height:360px;">
+          <table class="roi-table">
+            <thead>
+              <tr>
+                <th>Rank</th><th>Stream</th><th>Avg Cost</th>
+                <th>Satisfaction</th><th>Completion</th><th>ROI Score</th>
+              </tr>
+            </thead>
+            <tbody id="roiTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Cost vs Satisfaction Trend (full width) ───────────────────────── -->
+    <div class="charts-grid-full">
+      <div class="chart-card">
+        <h3>Are Increasing Costs Resulting in Improved Satisfaction?</h3>
+        <p class="chart-subtitle">Dual-axis trend: avg cost per employee vs avg satisfaction score over intake years</p>
+        <div class="chart-canvas-wrapper">
+          <canvas id="costSatTrendChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Intake Year Outcomes ───────────────────────────────────────── -->
+    <div class="section-header">
+      <h2>Intake Year Outcomes — How Do Employee Outcomes Differ?</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="charts-grid-2">
+
+      <div class="chart-card">
+        <h3>Satisfaction Classification Bands</h3>
+        <p class="chart-subtitle">Distribution of all employees across satisfaction categories</p>
+        <div class="chart-canvas-wrapper doughnut">
+          <canvas id="satisfactionBandsChart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3>Module Drop-off vs Completion Rates</h3>
+        <p class="chart-subtitle">Drop-off = enrolled but did not complete &middot; Line = completion rate</p>
+        <div class="chart-canvas-wrapper">
+          <canvas id="dropOffChart"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Success Factors ─────────────────────────────────────────────── -->
+    <div class="section-header">
+      <h2>Success Factors — What Drives Successful Completion?</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="charts-grid-2">
+
+      <div class="chart-card">
+        <h3>Successful vs Unsuccessful by Stream</h3>
+        <p class="chart-subtitle">Successful = completed &ge;4 modules &amp; avg satisfaction &ge;7</p>
+        <div class="chart-canvas-wrapper tall">
+          <canvas id="successStreamChart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3>Success Rate by Years of Experience</h3>
+        <p class="chart-subtitle">Does experience level correlate with programme success?</p>
+        <div class="chart-canvas-wrapper tall">
+          <canvas id="successExpChart"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────────────────────── -->
+  <footer class="dashboard-footer">
+    BMW Platform Academy · ZA Hub · Data processed by AWS Lambda
+  </footer>
+
+  <!-- ── Scripts ──────────────────────────────────────────────────────────── -->
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+
+</body>
+</html>

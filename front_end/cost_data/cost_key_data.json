@@ -1,0 +1,13 @@
+{
+  "cost_keys": [
+    {
+        "currency": "Euro",
+        "skillbuilder_cost": 123.80,
+        "instructor_cost": 208,
+        "mytms_cost": 50,
+        "game_day_cost": 305,
+        "hackathon_cost": 0,
+        "foundational_cert_cost": 150
+    }
+  ]
+}

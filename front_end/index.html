@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platform Academy | Sign In</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="login-page">
+
+  <div class="login-container">
+    <div class="login-card">
+
+      <div class="login-logo">
+        <div class="logo-mark">🎓</div>
+        <h1>Platform Academy</h1>
+        <p>Enablement Matrix Dashboard</p>
+      </div>
+
+      <button class="btn-primary" onclick="auth.login()">
+        🔐 &nbsp;Sign In
+      </button>
+
+      <p class="login-note">BMW Platform Academy · ZA Hub</p>
+
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // If Cognito has redirected back with a token in the URL hash, capture it
+    if (auth.handleCallback()) {
+      window.location.href = "dashboard.html";
+    }
+    // If already authenticated, skip the login page entirely
+    else if (auth.isAuthenticated()) {
+      window.location.href = "dashboard.html";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+/* BMW IT Hub — Global Styles */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'BMW Motorrad', 'Helvetica Neue', Arial, sans-serif;
+  background: #f4f6fa;
+  color: #1a1a2e;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 { margin: 0; }
+p { margin: 0; }
+
+:root {
+  --bmw-navy:   #1A2B5F;
+  --bmw-blue:   #0066B2;
+  --bmw-light:  #5bb8ff;
+  --aws-orange: #ff9900;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f0f0f0; }
+::-webkit-scrollbar-thumb { background: #0066B2; border-radius: 3px; }

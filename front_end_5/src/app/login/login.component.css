@@ -1,0 +1,191 @@
+:host {
+  display: block;
+}
+
+/* ── Full-viewport dark grid ───────────────────────────────── */
+.login-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #080808;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 55px 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Corner glow orbs ──────────────────────────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orb-pink {
+  width: 700px;
+  height: 700px;
+  bottom: -280px;
+  left: -200px;
+  background: radial-gradient(circle at center, rgba(210, 0, 100, 0.65) 0%, transparent 65%);
+  filter: blur(70px);
+}
+
+.orb-green {
+  width: 650px;
+  height: 650px;
+  top: -200px;
+  right: -160px;
+  background: radial-gradient(circle at center, rgba(0, 200, 80, 0.55) 0%, transparent 65%);
+  filter: blur(65px);
+}
+
+/* ── Content block ─────────────────────────────────────────── */
+.login-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ── Status tag ────────────────────────────────────────────── */
+.page-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #00e676;
+  text-transform: uppercase;
+  margin: 0 0 1.6rem;
+}
+
+.tag-sq {
+  font-size: 0.58rem;
+  line-height: 1;
+}
+
+/* ── Heading ───────────────────────────────────────────────── */
+.page-title {
+  font-size: clamp(2.4rem, 7vw, 3.6rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.6rem;
+  font-family: 'Arial Black', 'Arial Bold', sans-serif;
+}
+
+/* ── Pink rule ─────────────────────────────────────────────── */
+.page-rule {
+  width: 140px;
+  height: 3px;
+  background: #ff2d78;
+  margin: 0 auto 2.4rem;
+  border-radius: 2px;
+}
+
+/* ── Card ──────────────────────────────────────────────────── */
+.card {
+  background: rgba(18, 18, 22, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 2.4rem 2.2rem 2rem;
+  text-align: left;
+  backdrop-filter: blur(10px);
+}
+
+.card-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 1.6rem;
+}
+
+/* ── Form fields ───────────────────────────────────────────── */
+.field-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+
+.field-input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  background: #0c0c10;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  padding: 0.82rem 1rem;
+  margin-bottom: 1.3rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.field-input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.field-input:focus {
+  border-color: rgba(0, 229, 255, 0.5);
+}
+
+/* ── CONNECT button ────────────────────────────────────────── */
+.connect-btn {
+  display: block;
+  width: 100%;
+  background: #00e5ff;
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  padding: 0.95rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 0.4rem;
+  margin-bottom: 1.2rem;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.connect-btn:hover {
+  background: #33eaff;
+}
+
+.connect-btn:active {
+  transform: scale(0.98);
+}
+
+.connect-btn:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.login-error {
+  margin: 0 0 1rem;
+  color: #ff8fab;
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+/* ── Forgot credentials ────────────────────────────────────── */
+.forgot {
+  text-align: center;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+}

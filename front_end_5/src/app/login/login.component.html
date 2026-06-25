@@ -1,0 +1,59 @@
+<section class="login-page">
+
+  <!-- Corner colour glows -->
+  <div class="orb orb-pink"></div>
+  <div class="orb orb-green"></div>
+
+  <!-- Page content -->
+  <div class="login-content">
+
+    <!-- Status tag -->
+    <p class="page-tag">
+      <span class="tag-sq">&#9632;</span>
+      TRANSMISSION START // V2.0
+    </p>
+
+    <!-- Heading -->
+    <h1 class="page-title">Digest your Data</h1>
+    <div class="page-rule"></div>
+
+    <!-- Sign-in card -->
+    <div class="card">
+      <h2 class="card-title">Sign in</h2>
+
+      <label class="field-label" for="username">USERNAME</label>
+      <input
+        id="username"
+        class="field-input"
+        type="email"
+        placeholder="Enter email"
+        [(ngModel)]="username"
+        autocomplete="username"
+      />
+
+      <label class="field-label" for="password">PASSWORD</label>
+      <input
+        id="password"
+        class="field-input"
+        type="password"
+        placeholder="••••••••"
+        [(ngModel)]="password"
+        autocomplete="current-password"
+        (keydown.enter)="login()"
+      />
+
+      <button class="connect-btn" (click)="login()" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'CONNECTING...' : 'CONNECT' }}
+      </button>
+
+      @if (errorMessage) {
+        <p class="login-error">{{ errorMessage }}</p>
+      }
+
+      <p class="forgot">Forgot credentials? Contact your admin.</p>
+    </div>
+
+  </div>
+
+</section>
+

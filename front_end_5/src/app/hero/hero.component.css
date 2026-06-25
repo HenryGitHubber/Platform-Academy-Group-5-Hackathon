@@ -1,0 +1,126 @@
+:host {
+  display: block;
+}
+
+/* ── Full-viewport dark grid ───────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #080808;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 55px 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ── Corner glow orbs ──────────────────────────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orb-pink {
+  width: 650px;
+  height: 650px;
+  top: -220px;
+  left: -200px;
+  background: radial-gradient(circle at center, rgba(210, 0, 100, 0.7) 0%, transparent 65%);
+  filter: blur(65px);
+}
+
+.orb-green {
+  width: 650px;
+  height: 650px;
+  top: -220px;
+  right: -200px;
+  background: radial-gradient(circle at center, rgba(0, 200, 80, 0.6) 0%, transparent 65%);
+  filter: blur(65px);
+}
+
+/* ── Content block ─────────────────────────────────────────── */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 2rem;
+  max-width: 960px;
+}
+
+/* Status tag */
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #00e676;
+  text-transform: uppercase;
+  margin: 0 0 1.6rem;
+}
+
+.tag-sq {
+  font-size: 0.58rem;
+  line-height: 1;
+}
+
+/* Main heading */
+.hero-title {
+  font-size: clamp(4rem, 10.5vw, 8.2rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  margin: 0 0 1rem;
+}
+
+/* Pink rule under heading */
+.hero-rule {
+  width: 460px;
+  max-width: 80%;
+  height: 4px;
+  background: #e0007a;
+  margin: 0 auto 2.2rem;
+}
+
+/* Subtitle */
+.hero-sub {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.75;
+  max-width: 540px;
+  margin: 0 auto 2.8rem;
+  font-weight: 400;
+}
+
+/* CTA button */
+.hero-btn {
+  display: inline-block;
+  background: #00e5ff;
+  color: #000000;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 1rem 2.8rem;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.12s ease;
+}
+
+.hero-btn:hover {
+  background: #00cfea;
+  transform: translateY(-2px);
+}
+
+.hero-btn:active {
+  transform: translateY(0);
+}
