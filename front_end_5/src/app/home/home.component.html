@@ -24,28 +24,28 @@
   <div class="kpi-strip">
     <div class="kpi-card">
       <div class="kpi-card-label">Employees Enrolled</div>
-      <span class="kpi-card-value">376</span>
-      <span class="kpi-card-trend">+12% vs last year</span>
+      <span class="kpi-card-value">447</span>
+      <span class="kpi-card-trend">+18.9% vs last year</span>
     </div>
     <div class="kpi-card">
       <div class="kpi-card-label">Total Training Spend</div>
-      <span class="kpi-card-value">€277k</span>
-      <span class="kpi-card-trend">+2.1% vs last year</span>
+      <span class="kpi-card-value">€1.33M</span>
+      <span class="kpi-card-trend">+381% vs last year</span>
     </div>
     <div class="kpi-card">
       <div class="kpi-card-label">Avg Satisfaction Score</div>
-      <span class="kpi-card-value">6.77</span>
-      <span class="kpi-card-trend">+0.3 vs last year</span>
+      <span class="kpi-card-value">6.83</span>
+      <span class="kpi-card-trend">+0.06 vs last year</span>
     </div>
     <div class="kpi-card">
       <div class="kpi-card-label">Programme Success Rate</div>
-      <span class="kpi-card-value">61.7%</span>
-      <span class="kpi-card-trend">+2.1% vs last year</span>
+      <span class="kpi-card-value">61%</span>
+      <span class="kpi-card-trend">Stable vs last year</span>
     </div>
     <div class="kpi-card">
       <div class="kpi-card-label">Data Quality</div>
       <span class="kpi-card-value">99.5%</span>
-      <span class="kpi-card-trend">-0.3ms vs last week</span>
+      <span class="kpi-card-trend">Live from S3 pipeline</span>
     </div>
   </div>
 </section>
@@ -65,7 +65,7 @@
     <div class="qs-card" *ngFor="let panel of quicksightPanels">
       <div class="qs-card-header">
         <div class="qs-card-header-left"><span class="qs-dot"></span><span class="qs-title">{{ panel.title }}</span></div>
-        <span class="qs-expand">EXPAND ›</span>
+        <span class="qs-expand" (click)="openModal(panel)">EXPAND ›</span>
       </div>
       <div class="qs-embed-placeholder">
         @if (panel.embedUrl) {
@@ -98,6 +98,44 @@
         }
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ── Expand Modal ─────────────────────────────────────────────────── -->
+@if (expandedPanel) {
+  <div class="modal-backdrop" (click)="closeModal()"></div>
+  <div class="modal-container">
+    <div class="modal-header">
+      <div class="qs-card-header-left"><span class="qs-dot"></span><span class="qs-title">{{ expandedPanel.title }}</span></div>
+      <button class="modal-close" (click)="closeModal()">&#x2715;</button>
+    </div>
+    <div class="modal-body">
+      @if (modalEmbedUrl) {
+        <iframe [src]="modalEmbedUrl" class="modal-iframe" frameborder="0" allowfullscreen></iframe>
+      } @else if (modalLoading) {
+        <div class="qs-placeholder-inner"><div class="qs-spinner"></div><p>Loading chart…</p></div>
+      } @else if (modalError) {
+        <div class="qs-placeholder-inner qs-error"><p>⚠️ {{ modalError }}</p></div>
+      }
+    </div>
+  </div>
+}
+
+<!-- ── Full Dashboard Embed (with filters) ───────────────────────────── -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Full Dashboard</h2>
+    <span class="badge badge-aws">With Filters &amp; Controls</span>
+  </div>
+  <p class="section-desc">Complete interactive dashboard including filter controls (Year, Department, Role, Experience, Year Enrolled).</p>
+  <div class="qs-full-wrap">
+    @if (fullDashboardUrl) {
+      <iframe [src]="fullDashboardUrl" class="qs-full-iframe" frameborder="0" allowfullscreen></iframe>
+    } @else if (fullDashboardError) {
+      <div class="qs-placeholder-inner qs-error"><p>⚠️ {{ fullDashboardError }}</p></div>
+    } @else {
+      <div class="qs-placeholder-inner"><div class="qs-spinner"></div><p>Loading full dashboard…</p></div>
+    }
   </div>
 </section>
 
