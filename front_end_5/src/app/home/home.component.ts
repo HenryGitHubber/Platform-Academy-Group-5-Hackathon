@@ -35,38 +35,38 @@ export class HomeComponent implements OnInit {
   // Sheet + Visual IDs from:
   //   aws quicksight describe-dashboard-definition --dashboard-id 1a71c9ed-...
   // ─────────────────────────────────────────────────────────────────────────
-  private readonly SHEET_ID = '1a71c9ed-29ed-4ac3-a540-9ea1e49182ef_75b99231-7ec4-4388-b478-9be838575595';
+  private readonly SHEET_ID = '9d9c754b-7cdb-4c8e-b483-123a0e879c88_6a473978-af49-4f7d-825b-0ad5dae6f427';
 
   quicksightPanels: QSPanel[] = [
     { id: 'qs-1', title: 'Programme Performance',    icon: '📊',
       description: 'ROI score, Completion rate & Avg satisfaction by Programme',
       sheetId: this.SHEET_ID,
-      visualId: '1a71c9ed-29ed-4ac3-a540-9ea1e49182ef_74419e9c-0433-4bca-89b8-b497d318e544',
+      visualId: '9d9c754b-7cdb-4c8e-b483-123a0e879c88_41980dfa-7933-40d5-bf61-820433ea7bb7',
       embedUrl: null, loading: false, error: null },
     { id: 'qs-2', title: 'Satisfaction by Year',     icon: '⭐',
       description: 'Average satisfaction scores — 2023 / 2024 / 2025',
       sheetId: this.SHEET_ID,
-      visualId: '1a71c9ed-29ed-4ac3-a540-9ea1e49182ef_737a7ca0-5667-45de-b7a9-2e2548c57483',
+      visualId: '9d9c754b-7cdb-4c8e-b483-123a0e879c88_761736f6-9b20-4777-8371-aa5d3eb03560',
       embedUrl: null, loading: false, error: null },
     { id: 'qs-3', title: 'Success Rate by Category', icon: '🎯',
       description: 'Success rates broken down by job category',
       sheetId: this.SHEET_ID,
-      visualId: '1a71c9ed-29ed-4ac3-a540-9ea1e49182ef_a89dea26-52ea-41cf-839c-a234a641390b',
+      visualId: '9d9c754b-7cdb-4c8e-b483-123a0e879c88_ff51ac7f-0adf-43f8-ae43-455b4b263d5a',
       embedUrl: null, loading: false, error: null },
     { id: 'qs-4', title: 'Cost per Employee',        icon: '💶',
       description: 'Training spend distribution and stream breakdown',
       sheetId: this.SHEET_ID,
-      visualId: '1a71c9ed-29ed-4ac3-a540-9ea1e49182ef_5015ff7f-6342-4290-a7ca-e82d3a82d20c',
+      visualId: '9d9c754b-7cdb-4c8e-b483-123a0e879c88_ef861f34-b5c6-4901-b362-b3cb8d15953c',
       embedUrl: null, loading: false, error: null },
     { id: 'qs-5', title: 'Enrolment Trends',         icon: '📅',
       description: 'Headcount and enrolment trends by intake year',
       sheetId: this.SHEET_ID,
-      visualId: '1a71c9ed-29ed-4ac3-a540-9ea1e49182ef_0705a773-c4e3-4a2d-aa8b-79dd192f7d61',
+      visualId: '9d9c754b-7cdb-4c8e-b483-123a0e879c88_2aceb5de-105d-4c02-9c37-c532e75a2ca8',
       embedUrl: null, loading: false, error: null },
     { id: 'qs-6', title: 'ROI by Stream',            icon: '📈',
       description: 'Return on investment scored by stream and year',
       sheetId: this.SHEET_ID,
-      visualId: '1a71c9ed-29ed-4ac3-a540-9ea1e49182ef_bb623d70-a19f-423d-a106-3a945057d9ae',
+      visualId: '9d9c754b-7cdb-4c8e-b483-123a0e879c88_806ccf33-4613-4326-8eaf-7073b854afba',
       embedUrl: null, loading: false, error: null },
   ];
 

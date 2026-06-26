@@ -17,7 +17,7 @@ const REGION       = 'us-east-1';
 const ACCOUNT_ID   = '339713122290';
 const ROLE_NAME    = 'CDHDevOps';
 const QS_NS        = 'default';
-const DASHBOARD_ID = '1a71c9ed-29ed-4ac3-a540-9ea1e49182ef';
+const DASHBOARD_ID = '9d9c754b-7cdb-4c8e-b483-123a0e879c88';
 const ALLOWED_ORIGINS = ['http://localhost:4200', 'http://localhost:4300'];
 
 // ── Corporate proxy setup ─────────────────────────────────────────────────
